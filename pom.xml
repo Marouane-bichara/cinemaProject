@@ -15,8 +15,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Library versions -->
-        <spring.version>5.3.36</spring.version> <!-- ✅ stable non-Boot version -->
-        <hibernate.version>5.6.15.Final</hibernate.version>
+        <spring.version>6.1.6</spring.version> <!-- ✅ stable non-Boot version -->
+        <hibernate.version>6.4.4.Final</hibernate.version>
         <mysql.version>8.0.33</mysql.version>
         <hikari.version>5.1.0</hikari.version>
         <junit.version>5.10.1</junit.version>
@@ -25,6 +25,20 @@
 
     <dependencies>
         <!-- 🧩 Spring Core (non-Boot) -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>7.0.0-RC1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>7.0.0-RC1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -34,13 +48,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
+            <version>7.0.0-RC1</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
+            <version>7.0.0-RC1</version>
         </dependency>
 
         <!-- 🧩 Hibernate ORM -->
@@ -58,6 +72,19 @@
         </dependency>
 
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.11</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+
+        <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.1.0</version>
@@ -69,12 +96,12 @@
             <version>${mysql.version}</version>
         </dependency>
 
-        <!-- 🧩 Jakarta Persistence API -->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
+<!--        &lt;!&ndash; 🧩 Jakarta Persistence API &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>jakarta.persistence</groupId>-->
+<!--            <artifactId>jakarta.persistence-api</artifactId>-->
+<!--            <version>3.1.0</version>-->
+<!--        </dependency>-->
 
         <!-- 🧩 Validation -->
         <dependency>
@@ -82,6 +109,7 @@
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.0.2</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -103,10 +131,11 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>3.4.8</version> <!-- you can use the latest stable version -->
+            <version>4.0.0-RC1</version>
         </dependency>
 
         <!-- 🧪 Testing -->
