@@ -1,7 +1,9 @@
-package Project.Entities;
+package org.example.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "directors")
@@ -26,14 +28,19 @@ public class Director {
     @Column(length = 1000)
     private String biography;
 
+    @OneToMany(mappedBy = "director", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<Film> films;
+
     public Director() {}
 
-    public Director(String firstName, String lastName, String nationality, LocalDate birthDate, String biography) {
+    public Director(String firstName, String lastName, String nationality, LocalDate birthDate, String biography , List<Film> films) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationality = nationality;
         this.birthDate = birthDate;
         this.biography = biography;
+        this.films = films;
     }
 
     public Long getId() {
