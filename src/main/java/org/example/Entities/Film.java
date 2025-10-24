@@ -1,5 +1,6 @@
 package org.example.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,14 +26,26 @@ public class Film {
     @Column
     private Double rating;
 
+    @ManyToOne
+    @JoinColumn(name = "director_id" , nullable = false)
+    @JsonBackReference
+    private Director director;
+    @ManyToOne
+    @JoinColumn(name = "category_id" , nullable = false)
+    @JsonBackReference
+    private Category category;
+
+
     public Film () {}
 
-    public Film(String title, int releaseYear, int duration, String synopsis, Double rating) {
+    public Film(String title, int releaseYear, int duration, String synopsis, Double rating , Director director , Category category) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.duration = duration;
         this.synopsis = synopsis;
         this.rating = rating;
+        this.director = director;
+        this.category = category;
     }
 
     public Long getId() {
@@ -81,6 +94,23 @@ public class Film {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

@@ -20,6 +20,7 @@
     <!-- Enable JPA repositories -->
     <jpa:repositories base-package="org.example.Repository"/>
 
+
     <!-- DataSource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
@@ -27,7 +28,6 @@
         <property name="username" value="myuser"/>
         <property name="password" value="myuserpassword"/>
     </bean>
-
 
     <!-- EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -48,8 +48,6 @@
             </props>
         </property>
     </bean>
-
-    <jpa:repositories base-package="org.example.Repository" />
 
     <!-- Transaction Manager -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
